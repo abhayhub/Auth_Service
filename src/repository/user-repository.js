@@ -27,6 +27,19 @@ class UserRepository {
         }
     }
 
+    async getById(userid){
+        try {
+            const user = await User.findByPk(userid , {
+//attributes property used for selecting some attributes from the table;
+                attributes : ['email','id']
+            });
+            return user;
+        } catch (error) {
+            console.log("Something went wrong at repository level");
+            throw error;
+        }
+    }
+
 
 
 }
